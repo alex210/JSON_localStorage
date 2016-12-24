@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>java</title>
+    <script type="text/javascript" src="script/jquery.min.js"></script>
+    <script type="text/javascript" src="script/tmpl.js"></script>
+    <script type="text/javascript" src="script/script.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+  </head>
+  <body>
+    <form name='questions' method="post" onsubmit="return false">
+      <script type="text/template" id='form'>
+        <h1 class="text-center"><%= data[0].name %></h1>
+        <% for(var i = 1; i < data.length - 1; i++) { %>
+          <h2><%= data[i].ask %></h2>
+          <% for(var j = 0; j < data[i].answer.length; j++) { %>
+            <div>
+            <label>
+            <input type="radio" name="<%= 'question' + i %>" value="answer1">
+              <%= data[i].answer[j] %>
+            </label>
+            </div>
+          <% } %>
+        <% } %>
+        <button type="submit" onclick="numberQuestion()" class="btn btn-success btn-lg center-block"><%= data[data.length-1].button %></button>
+      </script>
+    </form>
+  </body>
+</html>
